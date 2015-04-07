@@ -2,8 +2,9 @@
 import os
 import uuid
 
-DEBUG = True
+DEBUG = os.environ.get('environment', True)
 TEMPLATE_DEBUG = DEBUG
+ALLOWED_HOSTS = ['all']
 
 BASE_DIR = os.path.abspath(os.path.dirname(__name__))
 
@@ -32,7 +33,7 @@ STATIC_ROOT = ''
 STATIC_URL = '/static/'
 
 
-STATICFILES_DIRS = ()
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -70,7 +71,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'django_markdown',
-    'post'
+    'post',
+    'debug_toolbar'
 )
 
 

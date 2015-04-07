@@ -1,2 +1,4 @@
+django-debug-toolbar
+south==1.0
 Django==1.7
 django_markdown==0.8.4

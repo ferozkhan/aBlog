@@ -1,11 +1,29 @@
 <html>
     <head>
-        <title>{% block head_title %}Welcome to my blog{% endblock %}</title>
+        <title>{% block head_title %}aBlog{% endblock %}</title>
+        <link href="/static/stylesheet/site.css" rel="stylesheet" />
     </head>
     <body>
-        <h1>{% block title %}Welcome to my block{% endblock %}</h1>
-        {% block content %}
+        <div class="container">
+            <div class="navbar navbar-default">
+                <div class="navbar-brand"><a href="/">aBlog</a></div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">{% block post_data %}{% endblock %}</div>
+                <div class="col-md-4">
+                    {% block tag_list %}
+                        <div class="list-group">
+                            {% for tag in tags %}
+                                <a class="list-group-item" href="/tag/{{tag}}.html">
+                                    {{tag}}
+                                    <span class="badge">{{tag.post_count}}</span>
+                                </a>
+                            {% endfor %}
+                        </div>
+                    {% endblock %}
+                </div>
+            </div>
 
-        {% endblock %}
+        </div>
     </body>
 </html>
